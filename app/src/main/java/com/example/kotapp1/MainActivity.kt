@@ -21,7 +21,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.kotapp1.ui.theme.KotApp1Theme
 
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +28,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val counterViewModel = viewModel<ContadorViewModel.CounterViewModel>()
+            val moviesViewModel = viewModel<MoviesViewModel>()
             val navController = rememberNavController()
 
             KotApp1Theme {
@@ -38,6 +38,9 @@ class MainActivity : ComponentActivity() {
                     }
                     composable("MainActivity") {
                         PantallaPrincipal(navController, counterViewModel)
+                    }
+                    composable("movies") {
+                        MoviesScreen(navController, moviesViewModel)
                     }
                 }
             }
@@ -52,17 +55,19 @@ fun PantallaPrincipal(navController: NavController, viewModel: ContadorViewModel
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-
         TextButton(onClick = { viewModel.incrementCounter() }) {
             Text("CLICS: ${viewModel.counter}")
         }
 
         TextButton(onClick = { navController.navigate("screen1") }) {
-            Text("Moverse")
+            Text("Ir a Contador")
+        }
+
+        TextButton(onClick = { navController.navigate("movies") }) {
+            Text("Ver Películas Populares")
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
