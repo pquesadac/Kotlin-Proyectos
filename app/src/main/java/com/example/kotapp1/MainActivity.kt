@@ -45,6 +45,9 @@ class MainActivity : ComponentActivity() {
                     composable("taller_grafica") {
                         TallerGraficaScreen(navController)
                     }
+                    composable("custom_chart") {
+                        CustomBarChartScreen(navController)
+                    }
                 }
             }
         }
@@ -72,6 +75,9 @@ fun PantallaPrincipal(navController: NavController, viewModel: ContadorViewModel
 
         TextButton(onClick = { navController.navigate("taller_grafica") }) {
             Text("Ir a Gráfica")
+        }
+        TextButton(onClick = { navController.navigate("custom_chart") }) {
+            Text("Gráfica Personalizada")
         }
     }
 }
