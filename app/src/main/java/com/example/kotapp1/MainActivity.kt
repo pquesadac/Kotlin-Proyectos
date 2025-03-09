@@ -42,6 +42,9 @@ class MainActivity : ComponentActivity() {
                     composable("movies") {
                         MoviesScreen(navController, moviesViewModel)
                     }
+                    composable("taller_grafica") {
+                        TallerGraficaScreen(navController)
+                    }
                 }
             }
         }
@@ -65,6 +68,10 @@ fun PantallaPrincipal(navController: NavController, viewModel: ContadorViewModel
 
         TextButton(onClick = { navController.navigate("movies") }) {
             Text("Ver Películas Populares")
+        }
+
+        TextButton(onClick = { navController.navigate("taller_grafica") }) {
+            Text("Ir a Gráfica")
         }
     }
 }
